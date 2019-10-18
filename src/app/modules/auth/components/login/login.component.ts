@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators  } from '@angular/forms';
 import { UserRegData } from '../../interfaces/registrationData';
+import { SpesialErrorStateMatcher } from '../../../../helpers/errorStateMatcher';
 
 
 @Component({
@@ -11,6 +12,7 @@ import { UserRegData } from '../../interfaces/registrationData';
 })
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
+  public matcher = new SpesialErrorStateMatcher();
 
 
   constructor(private router: Router) { }
@@ -35,6 +37,6 @@ export class LoginComponent implements OnInit {
     console.log(newUser);
     localStorage.setItem('curentUserEmail', newUser.email);
     localStorage.setItem('curentUserPassword', newUser.password);
-    // this.router.navigate([]);
+    this.router.navigate(['/main/store']);
   }
 }

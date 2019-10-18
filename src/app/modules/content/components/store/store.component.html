@@ -1,0 +1,29 @@
+<div class="layaut">
+  <section>
+    <ul class="catalogGrid">
+      <li class="catalogGridElement" *ngFor="let item of offerList">
+        <mat-card class="card">
+          <mat-card-header class="cardHeader">
+            <mat-card-title class="text-center">{{item.manufacturer}}</mat-card-title>
+            <mat-card-subtitle>ID: {{item.vendorCode}}</mat-card-subtitle>
+          </mat-card-header>
+          <a href="">
+            <img mat-card-image [src]="item.pictire" alt="">
+          </a>
+          <mat-card-content>
+            <p class="text-center">
+              <span class="itemDescription">Color: {{item.color}}</span>
+              <br>
+              <span class="itemPrice">Price: {{item.price}}</span>
+            </p>
+          </mat-card-content>
+          <mat-card-actions class="text-center actionFild">
+            <button mat-raised-button color="accent" *ngIf="!isordered(item)">Add to cart</button>
+            <button mat-button *ngIf="isordered(item)">In cart</button>
+          </mat-card-actions>
+        </mat-card>
+      </li>
+    </ul>
+  </section>
+  <aside></aside>
+</div>

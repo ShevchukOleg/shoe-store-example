@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { passwordMatchValidator } from '../../../../helpers/passwordMatchValidator';
-// import { SpesialErrorStateMatcher } from '../../../../helpers/errorStateMatcher';
+
 
 
 @Component({
@@ -12,7 +12,7 @@ import { passwordMatchValidator } from '../../../../helpers/passwordMatchValidat
 })
 export class ResetPasswordComponent implements OnInit {
   public newPasswordForm: FormGroup;
-  // public matcher = new SpesialErrorStateMatcher();
+
 
 
   constructor(private formBuilder: FormBuilder, private router: Router) { }

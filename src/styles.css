@@ -3,6 +3,14 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+p {
+  margin: 5px 0 5px;
+}
+
+div {
+  box-sizing: border-box;
+}
+
 .container {
   display: block;
   width: 100%;
@@ -28,6 +36,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   padding: 15px;
   border-radius: 5px;
   background-color: #298883;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.justifyCenter {
+  justify-content: center;
 }
 
 @media (min-width: 250px) {

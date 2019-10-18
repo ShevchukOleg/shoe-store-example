@@ -1,0 +1,142 @@
+.layaut {
+  display: flex;
+  padding: 0 15px;
+  flex-direction: row-reverse;
+  width: 100%;
+  max-width: 1600px;
+
+}
+
+section {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  border: 0;
+  background-color: rgb(228, 218, 179);
+}
+
+aside {
+  display: none;
+  box-sizing: border-box;
+  width: 250px;
+  flex-shrink: 0;
+  background-color: cornsilk;
+}
+
+.catalogGrid {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style: none;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.catalogGridElement {
+  box-sizing: border-box;
+  display: list-item;
+  position: relative;
+  margin-bottom: 10px;
+  border-right: 1px solid #e8e9e3;
+  border-bottom: 1px solid #e8e9e3;
+  width: 100%;
+}
+
+.card {
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  height: 288px;
+}
+
+.cardHeader {
+  justify-content: center;
+  margin: 0 -16px;
+}
+
+a {
+  background-color: white;
+  display: block;
+  height: 120px;
+  position: relative;
+  width: auto;
+  max-width: 100%;
+  margin-bottom: 8px;
+}
+
+mat-card-content {
+  margin: 0 0 5px;
+}
+
+a img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  max-width: 99%;
+  max-height: 100%;
+  margin: 0;
+}
+
+.itemDescription {
+  font-size: 15px;
+  color: #0c7fa1;
+  font-weight: 500;
+
+}
+
+.itemPrice {
+  font-size: 16px;
+  color: #a7c459;
+  font-weight: 600;
+}
+
+.actionFild {
+  padding: 0;
+}
+
+@media(min-width: 576px) {
+  .catalogGridElement {
+    width: 50%;
+    margin-bottom: 0;
+  }
+}
+
+@media(min-width: 768px) {
+  .catalogGridElement {
+    width: 33.33%;
+    margin-bottom: 0;
+  }
+
+  .card {
+    height: 290px;
+  }
+}
+
+@media(min-width: 992px) {
+  .catalogGridElement {
+    width: 25%;
+    margin-bottom: 0;
+  }
+}
+
+@media(min-width: 1024px) {
+  aside {
+    display: block;
+  }
+
+  section {
+    width:  calc(100% - 250px);
+  }
+}
+
+@media(min-width: 1280px) {
+  .catalogGridElement {
+    width: 20%;
+  }
+}

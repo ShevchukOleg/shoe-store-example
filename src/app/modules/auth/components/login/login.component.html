@@ -2,26 +2,30 @@
   <div class="row">
     <div class="formWrapper">
       <form (ngSubmit)="login()" class="mainForm" [formGroup]="loginForm">
-        <p>Please, enter authorization data</p>
-        <mat-form-field [hideRequiredMarker]="">
-          <input matInput placeholder="E-mail" formControlName="email">
+        <p class="text-center">Please, enter authorization data</p>
+        <mat-form-field>
+          <input matInput placeholder="E-mail" formControlName="email" [errorStateMatcher]="matcher">
           <mat-error *ngIf="loginForm.get('email').errors?.email || loginForm.get('email').errors?.required">
-              Please enter a valid email
+            Please enter a valid email.
           </mat-error>
         </mat-form-field>
         <mat-form-field>
-            <mat-label>Password</mat-label>
-            <input matInput placeholder="password" formControlName="password">
-            <mat-error *ngIf="loginForm.get('password').errors?.required || loginForm.get('password').errors?.pattern">
-                Please enter a valid password
-            </mat-error>
-          </mat-form-field>
-          <button type="submit" [disabled]="loginForm.invalid" mat-raised-button color="primary">Login</button>
-          <p>
-              <a routerLink="/auth/reset-password" >
-                  For registration follow this link.
-              </a>
-            </p>
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="password" formControlName="password" [errorStateMatcher]="matcher">
+          <mat-error *ngIf="loginForm.get('password').errors?.required">
+            Password required!
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('password').errors?.pattern">
+            Password must contain at least 8 characters, including uppercase/lowercase letters, numbers and signs.
+          </mat-error>
+        </mat-form-field>
+        <button type="submit" [ngClass]="{'mt': loginForm.get('password').errors?.pattern}"
+          [disabled]="loginForm.invalid" mat-raised-button color="primary">Login</button>
+        <p class="text-center">
+          <a routerLink="/auth/reset-password">
+            For registration follow this link.
+          </a>
+        </p>
       </form>
 
     </div>
