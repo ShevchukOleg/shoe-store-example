@@ -3,7 +3,7 @@ import { Sneakers } from '../interfaces/sneakers';
 
 @Injectable()
 export class ContentService {
-  offersList: Sneakers[] = [
+  private offersList: Sneakers[] = [
     {
       manufacturer: 'Puma',
       vendorCode: 'OG 36980101',

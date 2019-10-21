@@ -4,7 +4,22 @@
   flex-direction: row-reverse;
   width: 100%;
   max-width: 1600px;
+}
 
+.filterForm {
+  margin: 15px auto 10px;
+  padding: 5px 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.filterForm label {
+  margin: 10px 0;
+  color: #0c7fa1;
+}
+
+ .mat-select-placeholder {
+  color: #0c7fa1 !important;
 }
 
 section {
@@ -20,7 +35,7 @@ aside {
   box-sizing: border-box;
   width: 250px;
   flex-shrink: 0;
-  background-color: cornsilk;
+  background-color: #424242;
 }
 
 .catalogGrid {

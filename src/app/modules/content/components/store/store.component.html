@@ -1,7 +1,7 @@
 <div class="layaut">
   <section>
     <ul class="catalogGrid">
-      <li class="catalogGridElement" *ngFor="let item of offerList">
+      <li class="catalogGridElement" *ngFor="let item of (offerList | sortingItems: pipeState.category : pipeState.order)">
         <mat-card class="card">
           <mat-card-header class="cardHeader">
             <mat-card-title class="text-center">{{item.manufacturer}}</mat-card-title>
@@ -18,12 +18,37 @@
             </p>
           </mat-card-content>
           <mat-card-actions class="text-center actionFild">
-            <button mat-raised-button color="accent" *ngIf="!isordered(item)">Add to cart</button>
+            <button mat-raised-button color="accent" (click)="addToCart(item)" *ngIf="!isordered(item)">Add to
+              cart</button>
             <button mat-button *ngIf="isordered(item)">In cart</button>
           </mat-card-actions>
         </mat-card>
       </li>
     </ul>
   </section>
-  <aside></aside>
+  <aside>
+    <div class="sideBarBlock">
+      <div class="sideBarBlockInner">
+        <form class="filterForm">
+          <label>Manufacturer:
+            <select #stateManufacturer (change)="changePipeOrder('manufacturer', stateManufacturer.value)">
+              <option *ngFor="let option of matStrOption" [value]="option.value">{{option.viewValue}}</option>
+            </select>
+          </label>
+
+          <label>Price:
+            <select #statePrice (change)="changePipeOrder('price', statePrice.value)">
+              <option *ngFor="let option of matNumberOption" [value]="option.value">{{option.viewValue}}</option>
+            </select>
+          </label>
+
+          <label>Color:
+            <select #stateColor (change)="changePipeOrder('color', stateColor.value)" placeholder="Color">
+              <option *ngFor="let option of matStrOption" [value]="option.value">{{option.viewValue}}</option>
+            </select>
+          </label>
+        </form>
+      </div>
+    </div>
+  </aside>
 </div>
