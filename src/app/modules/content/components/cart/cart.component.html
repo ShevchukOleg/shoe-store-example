@@ -1,1 +1,24 @@
-<p>cart works!</p>
+<div class="container">
+  <div class="row">
+    <div class="listWrapper">
+      <div class="listInfo">
+        <span>Total price: {{totalPrice}}</span>
+        <button mat-raised-button color="accent" (click)="clearCartList()">Clear cart</button>
+      </div>
+      <mat-list>
+        <mat-list-item *ngFor="let item of cartList">
+          <span>{{item.manufacturer}}</span>
+          <span>{{item.vendorCode}}</span>
+          <span>{{item.color}}</span>
+          <span>{{item.price}}</span>
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div class="emptyCart">
+      <span>Nothing here yet</span>
+      <a routerLink="/main/store">
+        To store
+      </a>
+    </div>
+  </div>
+</div>
