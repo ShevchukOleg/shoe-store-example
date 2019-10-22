@@ -1,24 +1,34 @@
 <div class="container">
-  <div class="row">
+  <div class="row alignStart optimumHeight" *ngIf="!!totalPrice">
     <div class="listWrapper">
       <div class="listInfo">
-        <span>Total price: {{totalPrice}}</span>
-        <button mat-raised-button color="accent" (click)="clearCartList()">Clear cart</button>
+        <p class="infotmer">Total price: {{totalPrice}} &#8372;</p>
+        <button mat-raised-button color="accent" class="butonsText" (click)="clearCartList()">Clear cart</button>
       </div>
-      <mat-list>
-        <mat-list-item *ngFor="let item of cartList">
-          <span>{{item.manufacturer}}</span>
-          <span>{{item.vendorCode}}</span>
-          <span>{{item.color}}</span>
-          <span>{{item.price}}</span>
+      <mat-list class="list">
+        <mat-divider></mat-divider>
+        <h3 mat-subheader>You've selected these products</h3>
+        <mat-list-item class="itemDescription" *ngFor="let item of cartList">
+          <mat-icon (click)="deleteItem(item)" mat-list-icon>remove_shopping_cart</mat-icon>
+          <div class="dFlex justifyBetween" mat-line>
+              <h4 class="matLineItem">{{item.manufacturer}}</h4>
+              <p class="matLineItem itemCode">{{item.vendorCode}}</p>
+              <p class="matLineItem">{{item.price}} &#8372;</p>
+          </div>
         </mat-list-item>
       </mat-list>
     </div>
+
+  </div>
+  <div class="row justifyCenter optimumHeight" *ngIf="!totalPrice">
     <div class="emptyCart">
       <span>Nothing here yet</span>
-      <a routerLink="/main/store">
+      <!-- <a routerLink="/main/store">
         To store
-      </a>
+      </a> -->
+      <button mat-raised-button (click)="redirectToStore()" color="accent">Back to
+          store
+        </button>
     </div>
   </div>
 </div>

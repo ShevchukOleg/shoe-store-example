@@ -1,0 +1,106 @@
+header .container .row {
+  flex-direction: column;
+ }
+
+header .container .row .col {
+  margin: 10px 0 15px;
+  padding: 0 5px;
+  width: 100%;
+ }
+
+h1 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+.user {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 16px;
+  vertical-align: baseline;
+  line-height: 40px;
+}
+
+.colRight, .colLeft {
+  display: flex;
+}
+
+.cartWrapper {
+  position: relative;
+  height: 50px;
+}
+
+.icon {
+  font-size: 46px;
+  height: 46px;
+  width: 46px;
+}
+
+.cartItems {
+  position: absolute;
+  top: -5px;
+  right: 8px;;
+  border-radius: 50%;
+  color: rgb(5, 52, 80);
+  background-color: rgb(177, 238, 78);
+  padding: .25em .4em;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 12px;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+
+.cartValue {
+  visibility: hidden;
+  position: absolute;
+  bottom: 52px;
+  right: 50px;
+  border-radius: 50%;
+  background-color: rgb(78, 238, 225);
+  padding: .3em .4em;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+
+
+
+@media(min-width: 540px) {
+
+   .icon {
+    font-size: 48px;
+    height: 48px;
+    width: 48px;
+  }
+
+  .colRight {
+    text-align: right;
+  }
+
+  .colLeft {
+    text-align: left;
+  }
+
+  .cartValue {
+    bottom: 16px;
+    right: -65px;
+    visibility: visible;
+  }
+}
+
+@media(min-width: 768px) {
+  header .container .row {
+    flex-direction: row;
+   }
+
+   header .container .row .col {
+    flex: 0 1 45%;
+    max-width: 45%;
+    margin: 15px 0 25px;
+   }
+}

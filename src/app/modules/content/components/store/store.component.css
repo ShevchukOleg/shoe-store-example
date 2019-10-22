@@ -1,9 +1,9 @@
 .layaut {
   display: flex;
-  padding: 0 15px;
+  padding: 0;
   flex-direction: row-reverse;
   width: 100%;
-  max-width: 1600px;
+  background-color: rgb(228, 218, 179);
 }
 
 .filterForm {
@@ -15,7 +15,9 @@
 
 .filterForm label {
   margin: 10px 0;
-  color: #0c7fa1;
+  color: #21a4cc;
+  font-size: 18px;
+  font-weight: 600;
 }
 
  .mat-select-placeholder {
@@ -36,6 +38,20 @@ aside {
   width: 250px;
   flex-shrink: 0;
   background-color: #424242;
+}
+
+.sideBarName {
+  padding: 5px 10px;
+  font-family: 'Carter One', cursive;
+  font-size: 25px;
+  line-height: 30px;
+  color: #fff;
+}
+
+.label {
+  text-align: center;
+  font-family: 'Carter One', cursive;
+  font-size: 21px;
 }
 
 .catalogGrid {
@@ -64,7 +80,7 @@ aside {
   box-sizing: border-box;
   width: 100%;
   overflow: hidden;
-  height: 288px;
+  height: 295px;
 }
 
 .cardHeader {
@@ -129,7 +145,7 @@ a img {
   }
 
   .card {
-    height: 290px;
+    height: 300px;
   }
 }
 

@@ -1,8 +1,8 @@
 <div class="container">
-  <div class="row">
+  <div class="row alignCenter justifyCenter h100">
     <div class="formWrapper">
       <form (ngSubmit)="login()" class="mainForm" [formGroup]="loginForm">
-        <p class="text-center">Please, enter authorization data</p>
+        <p class="textCenter">Please, enter authorization data</p>
         <mat-form-field>
           <input matInput placeholder="E-mail" formControlName="email" [errorStateMatcher]="matcher">
           <mat-error *ngIf="loginForm.get('email').errors?.email || loginForm.get('email').errors?.required">
@@ -21,7 +21,7 @@
         </mat-form-field>
         <button type="submit" [ngClass]="{'mt': loginForm.get('password').errors?.pattern}"
           [disabled]="loginForm.invalid" mat-raised-button color="primary">Login</button>
-        <p class="text-center">
+        <p class="textCenter">
           <a routerLink="/auth/reset-password">
             For registration follow this link.
           </a>

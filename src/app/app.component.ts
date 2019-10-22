@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AppGlobalService } from './app-global.service'
+import { Router, NavigationEnd } from '@angular/router';
+import { AppGlobalService } from './app-global.service';
 
 @Component({
   selector: 'app-root',
@@ -7,13 +8,22 @@ import { AppGlobalService } from './app-global.service'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'itcraftTest';
+  public title = 'itcraftTest';
+  public showHeader: boolean;
 
   constructor(
-    public appGlobalService: AppGlobalService
+    public appGlobalService: AppGlobalService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.appGlobalService.initializeCartList();
+
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.showHeader = this.appGlobalService.headerTriger();
+      }
+    });
+    console.log(this.showHeader);
   }
 }

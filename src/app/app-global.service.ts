@@ -23,22 +23,41 @@ export class AppGlobalService {
     }
     return;
   }
-
+  /**
+   * - метод додавання товару в корзину користувача
+   * @param item об'єкт данниз про товар
+   */
   public addItemToList(item: Sneakers) {
     this.savedCartList.push(item);
     localStorage.setItem('savedCartList', JSON.stringify(this.savedCartList));
     this.savedCartListSource.next(this.savedCartList);
   }
 
+  /**
+   * - метод для видалення товару з корзини
+   * @param item - об'єкт данниз про товар що видаляється
+   */
   public deleteItemFromList(item: Sneakers) {
     this.savedCartList = this.savedCartList.filter((obj: Sneakers) => obj.vendorCode !== item.vendorCode);
     localStorage.setItem('savedCartList', JSON.stringify(this.savedCartList));
     this.savedCartListSource.next(this.savedCartList);
   }
-
+  /**
+   * метод очищення корзини користувача
+   */
   public clearCartList() {
     this.savedCartList = [];
     localStorage.setItem('savedCartList', JSON.stringify(this.savedCartList));
     this.savedCartListSource.next(this.savedCartList);
+  }
+
+  /**
+   * метод що керує відображенням хедеру
+   */
+  public headerTriger(): boolean {
+    const currentUser = localStorage.getItem('curentUserEmail');
+    const access = (currentUser !== null ? true : false);
+    console.log(access);
+    return access;
   }
 }

@@ -3,5 +3,5 @@ export interface Sneakers {
   vendorCode: string;
   price: number;
   color: string;
-  pictire: string;
+  picture: string;
 }

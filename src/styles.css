@@ -1,8 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+/* html, body { height: 100%; } */
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
 p {
   margin: 5px 0 5px;
 }
@@ -15,9 +17,8 @@ div {
   display: block;
   width: 100%;
   box-sizing: border-box;
-  background: #92a89d;
+  background: #a1c9b5;
   padding: 0 15px;
-  margin: auto auto;
 }
 
 .row {
@@ -25,9 +26,39 @@ div {
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
+}
+
+.dFlex {
+  display: flex !important;
+}
+
+.justifyCenter {
   justify-content: center;
+}
+
+.justifyBetween {
+  justify-content: space-between;
+}
+
+.justifyAround {
+  justify-content: space-around;
+}
+
+.alignStart {
+  align-items: flex-start;
+}
+
+.alignCenter {
   align-items: center;
-  height: 100vh
+}
+
+
+.h100 {
+  height: 100vh;
+}
+
+.optimumHeight {
+ min-height: calc(100vh - 140px);
 }
 
 .mainForm {
@@ -38,13 +69,32 @@ div {
   background-color: #298883;
 }
 
-.text-center {
+.textCenter {
   text-align: center;
 }
 
-.justifyCenter {
-  justify-content: center;
+.hidden {
+  visibility: hidden;
 }
+
+.infotmer {
+  font-size: 24px;
+  line-height: 31px;
+  font-weight: 500;
+  color: #f8e89e;
+  font-family: 'Timmana', sans-serif;
+
+}
+
+.butonsText {
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 500;
+  font-family: 'Carter One', cursive;
+  width: 60vw;
+  margin: 0 auto;
+}
+
 
 @media (min-width: 250px) {
   .formWrapper {
@@ -69,5 +119,9 @@ div {
   .mainForm {
     padding: 15px;
   }
+
+  .optimumHeight {
+    min-height: calc(100vh - 90px);
+   }
 
 }

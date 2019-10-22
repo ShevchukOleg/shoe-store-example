@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppGlobalService } from './app-global.service';
+import { HeaderModule } from './modules/header/header.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +13,8 @@ import { AppGlobalService } from './app-global.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HeaderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -49,10 +49,12 @@ export class StoreComponent implements OnInit {
     public appGlobalService: AppGlobalService,
     private router: Router
   ) { }
-
+  /**
+   * на єтапі ініціалізації заповнюється перелік товарів магазину, здійснюєсться підписка
+   * на інформацію про обрані товари
+   */
   ngOnInit() {
     this.offerList = Object.assign(this.contentService.getofferList);
-    console.log(this.offerList);
 
     this.appGlobalService.savedCartListObservableSubject.subscribe(
       (data: Sneakers[]) => {
@@ -64,17 +66,17 @@ export class StoreComponent implements OnInit {
 
   public isOrdered(code: string) {
     let chack = 0;
-    if (this.cartList.length === 0 ) {
+    if (this.cartList.length === 0) {
       return false;
     } else {
-     this.cartList.forEach( (obj: Sneakers) => {
-       if (obj.vendorCode !== code) {
-        chack += 0;
-       } else {
-        chack += 1;
-       }
-     });
-     return !!chack;
+      this.cartList.forEach((obj: Sneakers) => {
+        if (obj.vendorCode !== code) {
+          chack += 0;
+        } else {
+          chack += 1;
+        }
+      });
+      return !!chack;
     }
   }
 

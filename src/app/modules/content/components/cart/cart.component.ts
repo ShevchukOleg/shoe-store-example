@@ -23,7 +23,11 @@ export class CartComponent implements OnInit {
   constructor(
     public appGlobalService: AppGlobalService,
     public router: Router) { }
-
+    /**
+     *  - на єтапі ініціалізації здіснюється підписка на спостерегіч за переліком обраниз товарів
+     * дані копіюються у публічну змінну класу компоненти, підраховується загална вартість і теж
+     * зберігається у філді класу
+     */
   ngOnInit() {
     this.appGlobalService.savedCartListObservableSubject.subscribe(
       (data: Sneakers[]) => {
@@ -39,9 +43,24 @@ export class CartComponent implements OnInit {
       },
       (error) => console.log(error));
   }
-
+  /**
+   * - метод для активаці процесу очистки переліку обраних товарів
+   */
   public clearCartList() {
     this.appGlobalService.clearCartList();
+  }
+  /**
+   * - метод активації процесу видалення товару з переліку обраних
+   * @param item - об'єкт що містить інформацію про товар для видалення
+   */
+  public deleteItem(item: Sneakers) {
+    this.appGlobalService.deleteItemFromList(item);
+  }
+  /**
+   *  - метод для переходу до сторінки магазину
+   */
+  public redirectToStore() {
+    this.router.navigate(['/main/store'])
   }
 
 }
