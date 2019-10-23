@@ -49,6 +49,10 @@ aside {
   background-color: #424242;
 }
 
+.sideBarBlockInner {
+  margin: 15px auto;
+}
+
 .sideBarName {
   padding: 5px 10px;
   font-family: 'Carter One', cursive;
