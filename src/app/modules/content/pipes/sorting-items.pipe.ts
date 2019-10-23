@@ -11,7 +11,7 @@ import { Sneakers } from '../interfaces/sneakers';
 export class SortingItemsPipe implements PipeTransform {
 
   transform(values: Sneakers[], categori: string, order: string): Sneakers[] {
-    console.log('Data in pipe', categori, order, values);
+    // console.log('Data in pipe', categori, order, values);
     if (categori === 'price') {
       switch (order) {
         case 'none':

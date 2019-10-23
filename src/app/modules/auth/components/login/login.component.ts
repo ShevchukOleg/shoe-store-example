@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       email: this.loginForm.get('email').value,
       password: this.loginForm.get('password').value
     };
-    console.log(newUser);
+    // console.log(newUser);
     localStorage.setItem('curentUserEmail', newUser.email);
     localStorage.setItem('curentUserPassword', newUser.password);
     this.router.navigate(['/main/store']);

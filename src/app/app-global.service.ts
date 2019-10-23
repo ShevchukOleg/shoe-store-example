@@ -57,7 +57,7 @@ export class AppGlobalService {
   public headerTriger(): boolean {
     const currentUser = localStorage.getItem('curentUserEmail');
     const access = (currentUser !== null ? true : false);
-    console.log(access);
+    // console.log(access);
     return access;
   }
 }

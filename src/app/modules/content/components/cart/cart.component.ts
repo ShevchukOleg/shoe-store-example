@@ -31,7 +31,7 @@ export class CartComponent implements OnInit {
   ngOnInit() {
     this.appGlobalService.savedCartListObservableSubject.subscribe(
       (data: Sneakers[]) => {
-        console.log('Cart-items data in cart component', data);
+        // console.log('Cart-items data in cart component', data);
         this.cartList = Object.assign(data);
         (() => {
           this.totalPrice = 0;
@@ -39,9 +39,9 @@ export class CartComponent implements OnInit {
             this.totalPrice += obj.price;
           });
         })();
-        console.log(this.totalPrice);
+        // console.log(this.totalPrice);
       },
-      (error) => console.log(error));
+      (error) => alert(error));
   }
   /**
    * - метод для активаці процесу очистки переліку обраних товарів

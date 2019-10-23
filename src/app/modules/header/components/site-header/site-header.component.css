@@ -23,7 +23,18 @@ h1 {
 }
 
 .colRight, .colLeft {
+  position: relative;
   display: flex;
+}
+
+.colLeft {
+  display: flex;
+  flex-direction: column;
+}
+
+.colLeft blockquote {
+  margin: 0;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 .cartWrapper {
@@ -101,6 +112,6 @@ h1 {
    header .container .row .col {
     flex: 0 1 45%;
     max-width: 45%;
-    margin: 15px 0 25px;
+    margin: 15px 0 19px;
    }
 }

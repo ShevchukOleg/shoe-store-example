@@ -1,5 +1,6 @@
 <div class="layaut">
   <section>
+    <h3>The most popular sneakers</h3>
     <ul class="catalogGrid">
       <li class="catalogGridElement" *ngFor="let item of (offerList | sortingItems: pipeState.category : pipeState.order)">
         <mat-card class="card">

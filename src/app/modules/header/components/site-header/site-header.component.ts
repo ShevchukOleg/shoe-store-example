@@ -25,7 +25,7 @@ export class SiteHeaderComponent implements OnInit {
 
     this.appGlobalService.savedCartListObservableSubject.subscribe(
       (data: Sneakers[]) => {
-        console.log('Cart-items data in header component', data);
+        // console.log('Cart-items data in header component', data);
         this.amountOfItems = data.length;
         (() => {
           this.totalValue = 0;
@@ -33,7 +33,7 @@ export class SiteHeaderComponent implements OnInit {
             this.totalValue += obj.price;
           });
         })();
-        console.log(this.totalValue);
+        // console.log(this.totalValue);
       },
       (error) => console.log(error));
   }

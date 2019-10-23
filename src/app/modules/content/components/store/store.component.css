@@ -32,6 +32,15 @@ section {
   background-color: rgb(228, 218, 179);
 }
 
+section h3 {
+  font-family: 'Timmana', sans-serif;
+  font-size: 26px;
+  text-align: center;
+  padding: 15px 10px 10px;
+  color: #21a4cc;
+
+}
+
 aside {
   display: none;
   box-sizing: border-box;

@@ -1,10 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-/* html, body { height: 100%; } */
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
+
 p {
   margin: 5px 0 5px;
 }
@@ -52,13 +53,12 @@ div {
   align-items: center;
 }
 
-
 .h100 {
   height: 100vh;
 }
 
 .optimumHeight {
- min-height: calc(100vh - 140px);
+ min-height: calc(100vh - 156px);
 }
 
 .mainForm {
@@ -95,7 +95,6 @@ div {
   margin: 0 auto;
 }
 
-
 @media (min-width: 250px) {
   .formWrapper {
     flex: 0 0 70%;
@@ -104,9 +103,8 @@ div {
   }
 
   .mainForm {
-    padding: 8px;
+    padding: 12px;
   }
-
 }
 
 @media (min-width: 768px) {
@@ -123,5 +121,4 @@ div {
   .optimumHeight {
     min-height: calc(100vh - 90px);
    }
-
 }

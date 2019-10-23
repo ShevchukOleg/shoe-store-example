@@ -58,7 +58,7 @@ export class StoreComponent implements OnInit {
 
     this.appGlobalService.savedCartListObservableSubject.subscribe(
       (data: Sneakers[]) => {
-        console.log('Отримано дані про обрані предмети', data);
+        // console.log('Отримано дані про обрані предмети', data);
         this.cartList = Object.assign(data);
       },
       (error) => console.log(error));

@@ -7,8 +7,16 @@ h4 {
   font-weight: 600;
 }
 
-mat-icon {
+.borderTop {
+  border-top: 10px solid;
+  border-image-source: linear-gradient(165deg, #43ac77 4%, #43aca7 21%,  #a1c9b5 35%);
+  border-image-slice: 1;
+}
+
+.mat-list-base .mat-list-item  mat-icon.mat-list-icon {
   cursor: pointer;
+  color: #dbbb52;
+  font-size: 30px;
 }
 
 .listWrapper {
@@ -31,21 +39,15 @@ mat-icon {
   margin: 20px auto;
   overflow: hidden;
   min-width: 90%;
-  border-width: 5px;
+  /* border-width: 5px;
   border-style: solid;
   border-image:
     linear-gradient(
       to bottom,
       rgb(78, 241, 100),
       #92a89d
-    ) 1 100%;
+    ) 1 100%; */
 }
-
-/* .listWrapper .listInfo .mat-list-base .mat-list-item.mat-list-item-with-avatar .mat-list-item-content .mat-list-text {
-  flex-direction: row !important;
-} */
-
-
 
 .itemDescription {
   font-size: 20px;
@@ -58,11 +60,13 @@ mat-icon {
 
 .itemDescription .itemCode {
   display: none;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 auto;
 }
 
 .matLineItem {
   margin: auto 0;
-  /* flex: 1 1 30%; */
   line-height: 31px;
   vertical-align: bottom;
 }

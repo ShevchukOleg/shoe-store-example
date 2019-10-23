@@ -16,6 +16,11 @@ export class AppComponent implements OnInit {
     private router: Router
   ) { }
 
+  /**
+   * при ініціалізації компоненти найфвищого рівня активується метод глобального сервісу
+   * для оновлення інформації про перелік обраних користувачем товарів, та здійснюється управління
+   * станом відображення хедеру
+   */
   ngOnInit(): void {
     this.appGlobalService.initializeCartList();
 
@@ -24,6 +29,5 @@ export class AppComponent implements OnInit {
         this.showHeader = this.appGlobalService.headerTriger();
       }
     });
-    console.log(this.showHeader);
   }
 }
