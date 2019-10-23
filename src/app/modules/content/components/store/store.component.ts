@@ -64,7 +64,11 @@ export class StoreComponent implements OnInit {
       (error) => console.log(error));
   }
 
-  public isOrdered(code: string) {
+  /**
+   * - метод управління відображенням кнопок замовлення та переходу до корзини
+   * @param code: string - код продукту
+   */
+  public isOrdered(code: string): boolean {
     let chack = 0;
     if (this.cartList.length === 0) {
       return false;
@@ -79,11 +83,19 @@ export class StoreComponent implements OnInit {
       return !!chack;
     }
   }
-
+  /**
+   * - метод додавання товару до корзини
+   * @param item - об'єкт данних про продукт
+   */
   public addToCart(item: Sneakers) {
     this.appGlobalService.addItemToList(item);
   }
 
+  /**
+   * - метод зиіни пайпу сортування товарів
+   * @param category - параметр згадно якого відбувається сортування
+   * @param order - порядок сортування
+   */
   public changePipeOrder(category: string, order: string) {
     this.pipeState.category = category;
     this.pipeState.order = order;

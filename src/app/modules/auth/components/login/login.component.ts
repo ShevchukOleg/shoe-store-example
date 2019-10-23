@@ -17,6 +17,9 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router) { }
 
+  /**
+   * під час ініціалізації класу компоненти створюється реактивна форма з валідаторами
+   */
   ngOnInit() {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.email, Validators.required]),
@@ -28,7 +31,9 @@ export class LoginComponent implements OnInit {
       )}
     );
   }
-
+  /**
+   * метод декларації активного користувача, що передбачає збереження данних до LocalStorage
+   */
   public login() {
     const newUser: UserRegData = {
       email: this.loginForm.get('email').value,

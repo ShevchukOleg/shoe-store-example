@@ -16,7 +16,9 @@ export class ResetPasswordComponent implements OnInit {
 
 
   constructor(private formBuilder: FormBuilder, private router: Router) { }
-
+  /**
+   * під час ініціалізації класу компоненти створюється реактивна форма з валідаторами
+   */
   ngOnInit() {
 
     this.newPasswordForm = this.formBuilder.group({
@@ -33,12 +35,19 @@ export class ResetPasswordComponent implements OnInit {
     });
   }
 
+  /**
+   * допоміжний метод для спрощення финтаксису шаблону
+   */
   get f() { return this.newPasswordForm.controls; }
 
+  /**
+   * -метод скидання паролю
+   */
   public resetPassword() {
 
     if (this.newPasswordForm.invalid) {
       console.log('Form invalid!');
+      alert('Form is invalid!');
       return;
     }
     const formFirstFild: string = this.newPasswordForm.get('password').value;

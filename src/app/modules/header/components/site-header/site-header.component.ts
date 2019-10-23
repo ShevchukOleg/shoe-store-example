@@ -15,6 +15,11 @@ export class SiteHeaderComponent implements OnInit {
     public appGlobalService: AppGlobalService
   ) { }
 
+  /**
+   * при ініціалізації компоненти отримуються данні про потчного користувача, а також
+   * відбувається підписка на дані про перелік обраних товарівю При зміні переліку відбувається
+   * калькуляція кількості та загальної вартості товарів.
+   */
   ngOnInit() {
     this.currentUser = localStorage.getItem('curentUserEmail');
 

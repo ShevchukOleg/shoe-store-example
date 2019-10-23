@@ -3,6 +3,10 @@ import { Sneakers } from '../interfaces/sneakers';
 
 @Injectable()
 export class ContentService {
+
+  /**
+   * - об'єкт данних про товари магазину
+   */
   private offersList: Sneakers[] = [
     {
       manufacturer: 'Puma',
@@ -176,6 +180,9 @@ export class ContentService {
 
   constructor() { }
 
+  /**
+   * метод надання переліку товарів
+   */
   get getofferList(): Sneakers[] {
     return this.offersList;
   }

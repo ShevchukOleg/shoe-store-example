@@ -4,6 +4,10 @@ import { Sneakers } from '../interfaces/sneakers';
 @Pipe({
   name: 'sortingItems'
 })
+
+/**
+ * - пайп сортування товарів по різним категоріям
+ */
 export class SortingItemsPipe implements PipeTransform {
 
   transform(values: Sneakers[], categori: string, order: string): Sneakers[] {
