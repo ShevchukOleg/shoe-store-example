@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AppGlobalService } from '../../../../app-global.service';
 import { Sneakers } from '../../interfaces/sneakers';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -9,7 +10,10 @@ import { Router } from '@angular/router';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit {
+
+export class CartComponent implements OnInit, OnDestroy {
+
+  subscriptions: Array<Subscription> = [];
 
   /**
    * - перелік товарів що обрані до корзини
@@ -28,21 +32,39 @@ export class CartComponent implements OnInit {
      * дані копіюються у публічну змінну класу компоненти, підраховується загална вартість і теж
      * зберігається у філді класу
      */
-  ngOnInit() {
-    this.appGlobalService.savedCartListObservableSubject.subscribe(
-      (data: Sneakers[]) => {
-        // console.log('Cart-items data in cart component', data);
-        this.cartList = Object.assign(data);
-        (() => {
-          this.totalPrice = 0;
-          this.cartList.forEach((obj: Sneakers) => {
-            this.totalPrice += obj.price;
-          });
-        })();
-        // console.log(this.totalPrice);
-      },
-      (error) => alert(error));
+  ngOnInit(): void {
+    this.subscriptions.push(
+      this.appGlobalService.savedCartListObservableSubject.subscribe(
+        (data: Sneakers[]) => {
+          // console.log('Cart-items data in cart component', data);
+          this.cartList = Object.assign(data);
+          (() => {
+            this.totalPrice = 0;
+            this.cartList.forEach((obj: Sneakers) => {
+              this.totalPrice += obj.price;
+            });
+          })();
+          // console.log(this.totalPrice);
+        },
+        (error) => alert(error)
+      )
+    );
   }
+
+
+  ngOnDestroy(): void {
+    /**
+     * відписка від спостерігачів сервісу
+     */
+    this.subscriptions.forEach(
+        (subscription) => {
+          subscription.unsubscribe();
+          subscription = null;
+        }
+      );
+    this.subscriptions = [];
+  }
+
   /**
    * - метод для активаці процесу очистки переліку обраних товарів
    */
