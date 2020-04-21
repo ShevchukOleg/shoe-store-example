@@ -15,7 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
-  declarations: [SortingItemsPipe, StoreComponent, CartComponent ],
+  declarations: [SortingItemsPipe, StoreComponent, CartComponent],
   imports: [
     CommonModule,
     ContentRoutingModule,

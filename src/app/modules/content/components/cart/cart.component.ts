@@ -27,17 +27,17 @@ export class CartComponent implements OnInit, OnDestroy {
   constructor(
     public appGlobalService: AppGlobalService,
     public router: Router) { }
-    /**
-     *  - на єтапі ініціалізації здіснюється підписка на спостерегіч за переліком обраниз товарів
-     * дані копіюються у публічну змінну класу компоненти, підраховується загална вартість і теж
-     * зберігається у філді класу
-     */
+  /**
+   *  - на єтапі ініціалізації здіснюється підписка на спостерегіч за переліком обраниз товарів
+   * дані копіюються у публічну змінну класу компоненти, підраховується загална вартість і теж
+   * зберігається у філді класу
+   */
   ngOnInit(): void {
     this.subscriptions.push(
       this.appGlobalService.savedCartListObservableSubject.subscribe(
         (data: Sneakers[]) => {
           // console.log('Cart-items data in cart component', data);
-          this.cartList = Object.assign(data);
+          this.cartList = Array.from(data);
           (() => {
             this.totalPrice = 0;
             this.cartList.forEach((obj: Sneakers) => {
@@ -57,11 +57,11 @@ export class CartComponent implements OnInit, OnDestroy {
      * відписка від спостерігачів сервісу
      */
     this.subscriptions.forEach(
-        (subscription) => {
-          subscription.unsubscribe();
-          subscription = null;
-        }
-      );
+      (subscription) => {
+        subscription.unsubscribe();
+        subscription = null;
+      }
+    );
     this.subscriptions = [];
   }
 

@@ -54,12 +54,12 @@ export class StoreComponent implements OnInit {
    * на інформацію про обрані товари
    */
   ngOnInit() {
-    this.offerList = Object.assign(this.contentService.getofferList);
+    this.offerList = Array.from(this.contentService.getofferList);
 
     this.appGlobalService.savedCartListObservableSubject.subscribe(
       (data: Sneakers[]) => {
-        // console.log('Отримано дані про обрані предмети', data);
-        this.cartList = Object.assign(data);
+        console.log('Отримано дані про обрані предмети', data);
+        this.cartList = Array.from(data);
       },
       (error) => console.log(error));
   }
@@ -99,6 +99,7 @@ export class StoreComponent implements OnInit {
   public changePipeOrder(category: string, order: string) {
     this.pipeState.category = category;
     this.pipeState.order = order;
+    console.log(this.offerList);
     this.offerList = this.offerList.slice();
   }
 }

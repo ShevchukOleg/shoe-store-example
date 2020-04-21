@@ -2,7 +2,8 @@
   <section>
     <h3>The most popular sneakers</h3>
     <ul class="catalogGrid">
-      <li class="catalogGridElement" *ngFor="let item of (offerList | sortingItems: pipeState.category : pipeState.order)">
+      <li class="catalogGridElement"
+        *ngFor="let item of (offerList | sortingItems: pipeState.category : pipeState.order )">
         <mat-card class="card">
           <mat-card-header class="cardHeader">
             <mat-card-title class="label">{{item.manufacturer}}</mat-card-title>
@@ -19,7 +20,8 @@
             </p>
           </mat-card-content>
           <mat-card-actions class="textCenter actionFild">
-            <button mat-raised-button color="accent" (click)="addToCart(item)" *ngIf="!isOrdered(item.vendorCode)">Add to
+            <button mat-raised-button color="accent" (click)="addToCart(item)" *ngIf="!isOrdered(item.vendorCode)">Add
+              to
               cart</button>
             <button mat-button routerLink="/main/cart" *ngIf="isOrdered(item.vendorCode)">In cart</button>
           </mat-card-actions>
