@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { AppGlobalService } from './app-global.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   public title = 'itcraftTest';
   public showHeader: boolean;
+  private unsubscribe$ = new Subject<void>();
 
   constructor(
     public appGlobalService: AppGlobalService,
@@ -24,10 +27,19 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.appGlobalService.initializeCartList();
 
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.showHeader = this.appGlobalService.headerTriger();
-      }
-    });
+    this.router.events
+      .pipe(
+        takeUntil(this.unsubscribe$)
+      )
+      .subscribe((event) => {
+        if (event instanceof NavigationEnd) {
+          this.showHeader = this.appGlobalService.headerTriger();
+        }
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next(null);
+    this.unsubscribe$.complete();
   }
 }

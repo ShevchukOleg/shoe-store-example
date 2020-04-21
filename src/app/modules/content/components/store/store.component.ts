@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ContentService } from '../../services/content.service';
 import { AppGlobalService } from '../../../../app-global.service';
 import { Sneakers } from '../../interfaces/sneakers';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-store',
   templateUrl: './store.component.html',
   styleUrls: ['./store.component.css']
 })
-export class StoreComponent implements OnInit {
+export class StoreComponent implements OnInit, OnDestroy {
   /**
    * - перелік усіх товарів
    */
@@ -43,12 +45,17 @@ export class StoreComponent implements OnInit {
     { value: 'up', viewValue: 'A-Z' },
     { value: 'down', viewValue: 'Z-A' }
   ];
+  /**
+   * колекція реактивних підписок для механізму запобігання втрат пам'яті
+   */
+  private unsubscribe$ = new Subject<void>();
 
   constructor(
     public contentService: ContentService,
     public appGlobalService: AppGlobalService,
     private router: Router
   ) { }
+
   /**
    * на єтапі ініціалізації заповнюється перелік товарів магазину, здійснюєсться підписка
    * на інформацію про обрані товари
@@ -56,12 +63,16 @@ export class StoreComponent implements OnInit {
   ngOnInit() {
     this.offerList = Array.from(this.contentService.getofferList);
 
-    this.appGlobalService.savedCartListObservableSubject.subscribe(
-      (data: Sneakers[]) => {
-        console.log('Отримано дані про обрані предмети', data);
-        this.cartList = Array.from(data);
-      },
-      (error) => console.log(error));
+    this.appGlobalService.savedCartListObservableSubject
+      .pipe(
+        takeUntil(this.unsubscribe$)
+      )
+      .subscribe(
+        (data: Sneakers[]) => {
+          // console.log('Отримано дані про обрані предмети', data);
+          this.cartList = Array.from(data);
+        },
+        (error) => console.log(error));
   }
 
   /**
@@ -101,5 +112,12 @@ export class StoreComponent implements OnInit {
     this.pipeState.order = order;
     console.log(this.offerList);
     this.offerList = this.offerList.slice();
+  }
+  /**
+   * метод що спрацьовує в разі припинення роботі компоненти
+   */
+  ngOnDestroy(): void {
+    this.unsubscribe$.next(null);
+    this.unsubscribe$.complete();
   }
 }
