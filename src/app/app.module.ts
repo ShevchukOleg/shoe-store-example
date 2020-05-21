@@ -11,9 +11,9 @@ import { HeaderModule } from './modules/header/header.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
-    HeaderModule
+    HeaderModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

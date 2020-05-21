@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators  } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserRegData } from '../../interfaces/registrationData';
 import { SpesialErrorStateMatcher } from '../../../../helpers/errorStateMatcher';
 
@@ -28,7 +28,8 @@ export class LoginComponent implements OnInit {
           Validators.required,
           Validators.pattern(/^(?=.*\d)(?=.*[!@#$%&*'+/=?^_`{|}~-])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%&*'+/=?^_`{|}~-]{8,}$/g)
         ]
-      )}
+      )
+    }
     );
   }
   /**
