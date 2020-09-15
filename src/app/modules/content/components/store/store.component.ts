@@ -80,19 +80,7 @@ export class StoreComponent implements OnInit, OnDestroy {
    * @param code: string - код продукту
    */
   public isOrdered(code: string): boolean {
-    let chack = 0;
-    if (this.cartList.length === 0) {
-      return false;
-    } else {
-      this.cartList.forEach((obj: Sneakers) => {
-        if (obj.vendorCode !== code) {
-          chack += 0;
-        } else {
-          chack += 1;
-        }
-      });
-      return !!chack;
-    }
+    return this.cartList.some((obj: Sneakers) => obj.vendorCode === code);
   }
   /**
    * - метод додавання товару до корзини
